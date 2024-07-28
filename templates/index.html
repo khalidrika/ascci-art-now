@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASCII Art Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div class="container">  
+<div class="input">
+
+    <h1>ASCII ART Generator</h1>
+
+    <form action="/ascii-art" method="post">
+        <div class="choose">
+            <label for="text">Font:</label><br><br>
+        </div>  
+        
+        <div>
+            <select id="banner" name="banner">
+                {{range .Fonts}}
+                <option class="bannerOption" value="{{.}}" {{if eq $.Banner .}}selected{{end}}>{{.}}</option>
+                {{end}}
+            </select> 
+            <br><br>
+        </div>     
+             
+                           
+        <textarea type="text" id="text" name="text" maxlength="5000" rows="8" cols="50" placeholder="Input Text" required>{{.Text}}</textarea><br><br>
+
+        <button class="submit" type="submit">Generate</button>    
+
+        
+    </form>
+    <a href="http://127.0.0.1:8088/pickfont">
+        <button>All Fonts</button>
+    </a>
+</div>
+
+<div class="art">
+    <h2>ASCII Art Result</h2>
+    <pre class="ascii">{{.Art}}</pre>
+</div>
+
+
+</body>
+
+</html>
+
+
